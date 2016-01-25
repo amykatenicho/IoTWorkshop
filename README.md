@@ -1,13 +1,12 @@
 Windows 10 IoT Core Hands-on Lab
 ========================================
-ConnectTheDots will help you get tiny devices connected to Microsoft Azure, and to implement great IoT solutions taking advantage of Microsoft Azure advanced analytic services such as Azure Stream Analytics and Azure Machine Learning.
+ConnectTheDots will help you get tiny devices connected to Microsoft Azure, and to implement great IoT solutions taking advantage of Microsoft Azure IoT Hubs and the Universal Windows Platform.
 
 > This lab is stand-alone, but is used at Microsoft to accompany a presentation about Azure, Windows 10 IoT Core, and our IoT services. If you wish to follow this on your own, you are encouraged to do so. If not, consider attending a Microsoft-led IoT lab in your area.
 
 
 
-In this lab you will use a [Raspberry Pi 2](https://www.raspberrypi.org/products/raspberry-pi-2-model-b/) device with [Windows 10 Iot Core](http://ms-iot.github.io/content/en-US/Downloads.htm) and a [FEZ HAT](https://www.ghielectronics.com/catalog/product/500) sensor hat. Using a Windows 10 Universal Application, the sensors get the raw data and format it into a JSON string. That string is then shuttled off to the [Azure IoT Hub](https://azure.microsoft.com/en-us/services/iot-hub/), where it gathers the data and is then displayed in a chart using Power BI.
-The JSON string is sent to the IoT Hub in one of two ways: packaged into an AMQP message or in a REST packet. If you use AMQP, which is the recommended approach, you will need to have the AMQP port open on your firewall/router.
+In this lab you will use a [Raspberry Pi 2](https://www.raspberrypi.org/products/raspberry-pi-2-model-b/) device with [Windows 10 Iot Core](http://ms-iot.github.io/content/en-US/Downloads.htm) and a [FEZ HAT](https://www.ghielectronics.com/catalog/product/500) sensor hat. Using a Windows 10 Universal Application, the sensors get the raw data and format it into a JSON string. That string is then shuttled off to the [Azure IoT Hub](https://azure.microsoft.com/en-us/services/iot-hub/), where it gathers the data and you can communicate commands directly back to the device.
 
 > **Note:** Although AMQP is the recommended approach, at the time this lab was written that protocol was not supported by the [Azure IoT Core SDK](https://github.com/Azure/azure-iot-sdks) for UWP (Universal Windows Platform) applications. However, it is expected to be implemented in a short time, since it's currently under development.  
 
@@ -34,7 +33,7 @@ The following sections are intended to setup your environment to be able to crea
 
 <a name="Task11" />
 ### Setting up your Software
-To setup your Windows 10 IoT Core development PC, you first need to install the following:
+Your machine setup includes the following items already downloaded:
 
 - Windows 10 (build 10240) or better
 
@@ -42,26 +41,25 @@ To setup your Windows 10 IoT Core development PC, you first need to install the 
 
 	> **NOTE:** If you choose to install a different edition of VS 2015, make sure to do a **Custom** install and select the checkbox **Universal Windows App Development Tools** -> **Tools and Windows SDK**.
 
-	You can validate your Visual Studio installation by selecting _Help > About Microsoft Visual Studio_. The required version of **Visual Studio** is 14.0.23107.0 D14Rel. The required version of **Visual Studio Tools for Universal Windows Apps** is 14.0.23121.00 D14OOB.
-
 - Windows IoT Core Project Templates. You can download them from [here](https://visualstudiogallery.msdn.microsoft.com/55b357e1-a533-43ad-82a5-a88ac4b01dec). Alternatively, the templates can be found by searching for Windows IoT Core Project Templates in the [Visual Studio Gallery](https://visualstudiogallery.msdn.microsoft.com/) or directly from Visual Studio in the Extension and Updates dialog (Tools > Extensions and Updates > Online).
 
 - Make sure you’ve **enabled developer mode** in Windows 10 by following [these instructions](https://msdn.microsoft.com/library/windows/apps/xaml/dn706236.aspx).
 
-- To register your devices in the Azure IoT Hub Service and to monitor the communication between them you need to install the [Azure Device Explorer](https://github.com/Azure/azure-iot-sdks/blob/master/tools/DeviceExplorer/doc/how_to_use_device_explorer.md).
+
+### Download Azure Device Explorer
+- To register your devices in the Azure IoT Hub Service and to monitor the communication between them you need to install the [Azure Device Explorer](https://github.com/Azure/azure-iot-sdks/blob/master/tools/DeviceExplorer/doc/how_to_use_device_explorer.md). Follow this link to download the SetupDeviceExplorer.msi file: https://github.com/Azure/azure-iot-sdks/releases.
 
 <a name="Task12" />
 ### Setting up your Devices
 
-For this project, you will need the following:
+For this project, you have the following items
 
-- [Raspberry Pi 2 Model B](https://www.raspberrypi.org/products/raspberry-pi-2-model-b/) with power supply
+- [Raspberry Pi 2 Model B](https://www.raspberrypi.org/products/raspberry-pi-2-model-b/) with power supply and adaptor
 - [GHI FEZ HAT](https://www.ghielectronics.com/catalog/product/500)
-- Your PC running Windows 10, RTM build or later
+- Your PC running Windows 10 or later
 - An Ethernet port on the PC, or an auto-crossover USB->Ethernet adapter like the [Belkin F4U047](http://www.amazon.com/Belkin-USB-Ethernet-Adapter-F4U047bt/dp/B00E9655LU/ref=sr_1_2).
 - Standard Ethernet cable
-- A good 16GB or 32GB Class 10 SD card. We recommend Samsung or Sandisk. Other cards will usually work, but tend to die more quickly.
-- A WiFi dongle from the [list of devices that are currently supported by Windows 10 IoT Core on the Raspberry Pi 2](http://ms-iot.github.io/content/en-US/win10/SupportedInterfaces.htm#WiFi-Dongles)
+- A 16GB Samsung SD Card with Windows 10 IoT Core already mounted.
 
 To setup your devices perform the following steps:
 
@@ -71,11 +69,11 @@ To setup your devices perform the following steps:
 
 	_The FEZ hat connected to the Raspberry Pi 2 device_
 
-2. Get a Windows 10 IoT Core SD Card or download the **Windows 10 IoT Core** image as per the instructions on <http://ms-iot.github.io/content/en-US/win10/RPI.htm>, be sure to follow the steps to mount the image, and run the installer on your development PC. If you already have the OS image on a card, you still need to follow this step to get the IoT Core Watcher and Visual Studio templates on to your PC.
+2. Get your Windows 10 IoT Core SD Card and insert into the micro SD card on the Raspberry Pi device.  
 
-3. Once you have the image on the card, insert the micro SD card in the Raspberry Pi device.
+3. Download the **Windows 10 IoT Core** image as per the instructions on <http://ms-iot.github.io/content/en-US/win10/RPI.htm> and run the installer on your development PC. You already have Windows IoT core image on the SD card, you still need to follow this step to get the IoT Core Watcher on to your PC.
 
-4. Connect the Raspberry Pi to a power supply, optionally a keyboard, mouse and monitor, and use the Ethernet cable to connect your device and your development PC. You can do it by plugging in one end of the spare Ethernet cable to the extra Ethernet port on your PC, and the other end of the cable to the Ethernet port on your IoT Core device. (Do this using an on-board port or an auto-crossover USB->Ethernet interface.)
+4. Connect the Raspberry Pi to a power supply and use the Ethernet cable to connect your device and your development PC. You can do it by plugging in one end of the spare Ethernet cable to the extra Ethernet port on your PC, and the other end of the cable to the Ethernet port on your IoT Core device. (Do this using an on-board port or an auto-crossover USB->Ethernet interface.)
 
 	![windows-10-iot-core-fez-hat-hardware-setup](Images/windows-10-iot-core-fez-hat-hardware-setup.png)
 
@@ -116,67 +114,12 @@ To setup your devices perform the following steps:
 
 	![Connected to the Raspberry using PS](Images/connected-to-the-raspberry-using-ps.png?raw=true)
 
-#### Renaming your Device and Checking the Date and Time
-
-1. To change the _computer name_, use the **setcomputername** utility. In PowerShell, type the following command.
-
-	`setcomputername <new-name>`
-
-1. The date and time on the Pi must be correct for the security tokens used to publish to Azure later in the lab to be valid.  To check the current time zone setting on the Pi, type:
-
-	`tzutil /g`
-
-1. If the time zone reported is not correct, you can find a list of valid time zones using (you may need to increase the buffer size on your powershell window):
-
-	`tzutil /l`
-
-1. To set the time zone, locate the id of the time zone you want from the step above, then use:
-
-	`tzutil /s "Your TimeZone Name"
-
-	For example, for "Pacific Standard Time"
-
-	`tzutil /s "Pacific Standard Time"
-
-1. To check the date on the Raspberry Pi, type
-
-	`Get-Date`
-
-1. If the date or time is incorrect, use the `Set-Date` utility
-
-	`Set-Date "mm/dd/yy hh:mm:ss AM/PM"`
-
-	For Example, if it was 12:15 pm on January 3rd, 2016:
-
-	`Set-Date "01/03/16 12:15 PM"`
-
-2. **Reboot the device for the change to take effect**. You can use the shutdown command as follows:
-
-	`shutdown /r /t 0`
-
-3. Finally, connect to the Raspberry Pi to the same network as your Windows 10 development PC.
-
-You can also rename the device and set the time zone by using the web server, but certain functions, like actually changing the date and time, are currently available only through PowerShell. Now that you understand how to connect through PowerShell, we'll use the web server to set up WiFi.
-
-#### Using WiFi on your Device
-
-1. To configure your device, run the **Windows 10 IoT Core Watcher** utility in your development PC and open the [web-based management](http://ms-iot.github.io/content/en-US/win10/tools/DevicePortal.htm) application by right-clicking the detected device and selecting **Web Browser Here**.  To launch the "Windows 10 IoT Core Watcher" utility:
-
-	![windows-iot-core-watcher-open-browser](Images/windows-iot-core-watcher-open-browser.png?raw=true)
-
-2. To use WiFi, you will need to provide Windows 10 IoT core with the WiFi network credentials.
-	1. Enter **Administrator** for the username, and supply your password (_**p@ssw0rd**_ by default).
-	2. Click **Networking** in the left-hand pane.
-	3. Under **Available networks**, select network you would like to connect to and supply the connection credentials. Click **Connect** to initiate the connection.  Make sure the "**Create profile (auto re-connect)**" check box is **checked** so that the WiFi network will reconnect automatically if the Raspberry Pi reboots. 
-
-	![networking-wifi-adapters](Images/networking-wifi-adapters.png?raw=true)
-
-
-	> **Note:** You can find more info in [Using WiFi on your Windows 10 IoT Core device](https://ms-iot.github.io/content/en-US/win10/SetupWiFi.htm).
+13. Disconnect from the Powershell Session
+	`Exit-PSSession`
 
 <a name="Task13" />
 ### Setting up your Azure Account
-You will need a Microsoft Azure subscription ([free trial subscription] (http://azure.microsoft.com/en-us/pricing/free-trial/) is sufficient)
+<Add information about Azure Passes>
 
 #### Creating an IoT Hub
 
@@ -191,7 +134,7 @@ You will need a Microsoft Azure subscription ([free trial subscription] (http://
  - Enter a **Name** for the hub e.g. _iot-sample_,
  - Select a **Pricing and scale tier** (_F1 Free_ tier is enough),
  - Create a new resource group, or select and existing one. For more information, see [Using resource groups to manage your Azure resources](https://azure.microsoft.com/en-us/documentation/articles/resource-group-portal/).
- - Select the **Region** such as _East US_ where the service will be located.
+ - Select the **Region** such as _North Europe_ where the service will be located.
 
 	![new iot hub settings](Images/new-iot-hub-settings.png?raw=true "New IoT Hub settings")
 
@@ -205,27 +148,6 @@ You will need a Microsoft Azure subscription ([free trial subscription] (http://
 
 	![Get IoT Hub owner connection string](Images/get-iot-hub-owner-connection-string.png?raw=true)
 
-#### Creating a Stream Analitycs Job
-
-To create a Stream Analytics Job, perform the following steps.
-
-1. Currently the new Azure Portal doesn't support all of the features of Stream Analytics required for this lab.  For that reason, the Stream Analaytics configuration needs to be done in the **classic portal**.   To open the classic portal, in your browser navigate to https://manage.windowsazure.com and login in with your Azure Subscription's credentials. 
-
-1. In the Azure Management Portal, click **NEW**, then click **DATA SERVICES**, then **STREAM ANALYTICS**, and finally **QUICK CREATE**.
-
-2. Enter the **Job Name**, select a **Region**, such as _East US_ (if it is an option, create the Stream Analytics Job in the same region as your IoT Hub) and the enter a **NEW STORAGE ACCOUNT NAME** if this is the first storage account in the region used for Stream Analitycs, if not you have to select the one already used for that region.
-
-3. Click **CREATE A STREAM ANALITYCS JOB**.
-
-	![Creating a Stream Analytics Job](Images/createStreamAnalytics.png?raw=true)
-
-	_Creating a Stream Analytics Job_
-
-4. After the _Stream Analytics_ job is created, in the left pane click **STORAGE**, then click the account you used in the previous step, and click **MANAGE ACCESS KEYS**. As with the IoT Hub details, copy the **STORAGE ACCOUNT NAME** and the **PRIMARY ACCESS KEY** into a text file as you will use those values later.
-
-	![manage access keys](Images/manage-access-keys.png?raw=true)
-
-	_Managing Access Keys_
 
 <a name="Task14" />
 ### Registering your device
