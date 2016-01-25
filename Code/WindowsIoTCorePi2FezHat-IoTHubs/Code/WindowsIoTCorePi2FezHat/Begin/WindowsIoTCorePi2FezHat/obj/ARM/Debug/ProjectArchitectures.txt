@@ -1,0 +1,1 @@
+C:\Users\amynic\Documents\GitHub\IoTWorkshop\Code\WindowsIoTCorePi2FezHat-IoTHubs\Code\WindowsIoTCorePi2FezHat\Begin\WindowsIoTCorePi2FezHat\WindowsIoTCorePi2FezHat.csproj;arm
