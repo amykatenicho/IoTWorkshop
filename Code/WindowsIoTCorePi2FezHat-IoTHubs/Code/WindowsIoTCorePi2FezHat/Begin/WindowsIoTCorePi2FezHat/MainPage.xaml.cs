@@ -74,5 +74,7 @@ namespace WindowsIoTCorePi2FezHat
 
         //ENTER TELEMENTRYTIMER_TICK METHOD HERE
 
+
+        //ENTER COMMANDSTIMER_TICK METHOD HERE
     }
 }

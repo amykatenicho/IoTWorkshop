@@ -472,7 +472,7 @@ Now that your application is sending information from your device to the cloud f
 ## Sending commands to your devices
 Azure IoT Hub is a service that enables reliable and secure bi-directional communications between millions of IoT devices and an application back end. In this section you will see how to send cloud-to-device messages to your device to command it to change the color of one of the FEZ HAT leds, using the Device Explorer app as the back end.
 
-1. Open the Universal app you created before and add the following method to the **ConnectTheDotsHelper.cs** file:
+1. Open the Universal app you created before and add the following method to the **ConnectTheDotsHelper.cs** file. Add the code to the bottom of the file where you see the comment "//ADD RECIEVE MESSAGE METHOD HERE":
 
 	````C#
 	public async Task<string> ReceiveMessage()
@@ -509,13 +509,13 @@ Azure IoT Hub is a service that enables reliable and secure bi-directional commu
 
 	The _ReceiveAsync_ method returns the received message at the time that it is received by the device. The call to _CompleteAsync()_ notifies IoT Hub that the message has been successfully processed and that it can be safely removed from the device queue. If something happened that prevented the device app from completing the processing of the message, IoT Hub will deliver it again.
 	
-2. Now you will add the logic to process the messages received. Open the **MainPage.xaml.cs** file and add a new timer to the _MainPage_ class:
+2. Now you will add the logic to process the messages received. Open the **MainPage.xaml.cs** file and add a new timer to the _MainPage_ class. Add the new variable to the section "//DECLARE VARIABLES HERE":
 
 	````C#
 	DispatcherTimer commandsTimer;
 	````
 
-3. Add the following method, which will be on charge of processing the commands:
+3. Add the following method, which will be in charge of processing the commands where it says "//ENTER COMMANDTIMER_TICK METHOD HERE":
 
 	````C#
 	private async void CommandsTimer_Tick(object sender, object e)
@@ -573,4 +573,4 @@ Azure IoT Hub is a service that enables reliable and secure bi-directional commu
 
 <a name="Summary" />
 ## Summary
-In this lab, you have learned how to create a Universal app that reads from the sensors of a FEZ hat connected to a Raspberry Pi 2 running Windows 10 IoT Core, and upload those readings to an Azure IoT Hub. You also learned how to read and consume the information in the IoT Hub using Power BI to get near real-time analysis of the information gathered from the FEZ hat sensors and to create simple reports and how to consume it using a website. You also saw how to use the IoT Hubs Cloud-To-Device messages feature to send simple commands to your devices.
+In this lab, you have learned how to create a Universal app that reads from the sensors of a FEZ hat connected to a Raspberry Pi 2 running Windows 10 IoT Core, and upload those readings to an Azure IoT Hub. You also added more sensors to your application and implemented how to use the IoT Hubs Cloud-To-Device messages feature to send simple commands to your devices.
