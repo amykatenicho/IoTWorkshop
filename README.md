@@ -21,8 +21,9 @@ This lab includes the following tasks:
 2. [Creating a Universal App](#Task2)
 	1. [Read FEZ HAT sensors](#Task21)
 	2. [Send telemetry data to Azure IoT Hub](#Task22)
-3. [Adding Extra Sensors](#Task2)
-4. [Sending commands to your devices](#Task4)
+3. [Keep building up your project](#Task6)
+	1. [Adding extra sensors](#Task5)
+	2. [Sending commands to your devices](#Task4)
 5. [Summary](#Summary)
 
 <a name="Task1" />
@@ -431,9 +432,11 @@ Now that you know how to read the FEZ HAT sensors data, you will send that infor
 
 	![Telemetry messages received](Images/telemetry-messages-received.png?raw=true)
 
+<a name="Task6" />
+## Keep building up your project
 
-<a name="Task2" />
-## Adding Extra Sensors
+<a name="Task5" />
+## Adding extra sensors
 Now that your application is sending information from your device to the cloud for one sensor - lets add some more!
 
 
