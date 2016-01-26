@@ -137,5 +137,8 @@ namespace WindowsIoTCorePi2FezHat
                 return false;
             }
         }
+
+        //ADD RECIEVE MESSAGE METHOD HERE
+
     }
 }
