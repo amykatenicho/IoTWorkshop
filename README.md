@@ -22,8 +22,8 @@ This lab includes the following tasks:
 	1. [Read FEZ HAT sensors](#Task21)
 	2. [Send telemetry data to Azure IoT Hub](#Task22)
 3. [Keep building up your project](#Task6)
-	1. [Adding extra sensors](#Task5)
-	2. [Sending commands to your devices](#Task4)
+	1. [Adding extra sensors](#Task55)
+	2. [Sending commands to your devices](#Task44)
 5. [Summary](#Summary)
 
 <a name="Task1" />
@@ -435,8 +435,8 @@ Now that you know how to read the FEZ HAT sensors data, you will send that infor
 <a name="Task6" />
 ## Keep building up your project
 
-<a name="Task5" />
-## Adding extra sensors
+<a name="Task55" />
+### Adding extra sensors
 Now that your application is sending information from your device to the cloud for one sensor - lets add some more!
 
 
@@ -469,8 +469,8 @@ Now that your application is sending information from your device to the cloud f
 	_Output Window after Adding the Light Sensor_
 
 
-<a name="Task4">
-## Sending commands to your devices
+<a name="Task44" />
+### Send commands to your device
 Azure IoT Hub is a service that enables reliable and secure bi-directional communications between millions of IoT devices and an application back end. In this section you will see how to send cloud-to-device messages to your device to command it to change the color of one of the FEZ HAT leds, using the Device Explorer app as the back end.
 
 1. Open the Universal app you created before and add the following method to the **ConnectTheDotsHelper.cs** file. Add the code to the bottom of the file where you see the comment "//ADD RECIEVE MESSAGE METHOD HERE":
