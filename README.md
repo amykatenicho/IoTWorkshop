@@ -420,7 +420,8 @@ Now that you know how to read the FEZ HAT sensors data, you will send that infor
 	````
 
 	> Note you need to add the the **async** word (a modifier) to the event handler to properly handle an asynchronous call to the FEZ HAT initialization method. Place async as shown above between private and void
-	> WHAT DOES ASYNCHRONOUS MEAN?
+	
+	> **Asynchronous** methods/keywords help optimize the execution of resources. An asynchronous method returns an answer immediately, allowing the calling program to perform other operations at the same time. Allowing multi-threaded programming. This is different to a synchronous method that waits for the method to complete before continuing to execute the rest of the code.
 
 14. Now you are ready to run the application. Connect the Raspberry Pi with the FEZ HAT and run the application. After the app is deployed you will start to see in the output console the values polled from the sensor. The information sent to Azure is also shown in the console.
 
