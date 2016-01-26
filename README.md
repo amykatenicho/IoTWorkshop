@@ -21,9 +21,7 @@ This lab includes the following tasks:
 2. [Creating a Universal App](#Task2)
 	1. [Read FEZ HAT sensors](#Task21)
 	2. [Send telemetry data to Azure IoT Hub](#Task22)
-3. [Consuming the IoT Hub data](#Task3)
-	1. [Using Power BI](#Task32)
-	2. [Consuming the IoT Hub data from a Website](#Task33)
+3. [Adding Extra Sensors](#Task2)
 4. [Sending commands to your devices](#Task4)
 5. [Summary](#Summary)
 
