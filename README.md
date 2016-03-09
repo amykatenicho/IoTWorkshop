@@ -91,7 +91,7 @@ To setup your devices perform the following steps:
 	- You may want to right click on the program name and select "**Pin to Start**" to pin it to your start screen for easy access
 	- Press **Enter** to run it
 
-	![windows-iot-core-dashboard](Images/iot_core_dashboard.png?raw=true)
+	![windows-iot-core-dashboard](Images/iot_core_dashboard.PNG?raw=true)
 
 <If your device does not show up, follow the "GetIPAddressFromHostName.docx" document for instructions on gaining your IP from your unique device name on the bright label>
 
