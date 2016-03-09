@@ -48,6 +48,8 @@ Your machine setup includes the following items already downloaded:
 ### Download Azure Device Explorer
 - To register your devices in the Azure IoT Hub Service and to monitor the communication between them you need to install the [Azure Device Explorer](https://github.com/Azure/azure-iot-sdks/blob/master/tools/DeviceExplorer/doc/how_to_use_device_explorer.md). Follow this link to download the SetupDeviceExplorer.msi file: https://github.com/Azure/azure-iot-sdks/releases.
 
+![Azure IoT Hub Device Explorer](Images/iot_hub_explorer.PNG?raw=true)
+
 ### Download the IoT Core Dashboard
 - The Windows 10 IoT Core Dashboard allows you to easily discover and access your tiny devices running Windows IoT Core 10.0.10586 version or later. You can download this dashboard from here: https://ms-iot.github.io/content/en-US/GetStarted.htm
 
