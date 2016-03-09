@@ -36,7 +36,7 @@ Your machine setup includes the following items already downloaded:
 
 - Windows 10 (build 10240) or better
 
-- Visual Studio 2015 or above – [Community Edition](http://www.visualstudio.com/downloads/download-visual-studio-vs) is sufficient.
+- Visual Studio 2015 or above – [Community Edition](http://www.visualstudio.com/downloads/download-visual-studio-vs) is sufficient. Make sure to install Visual Studio Update 1 for the latest 10586 build of Windows IoT Core: https://www.visualstudio.com/en-us/news/vs2015-update1-vs.aspx
 
 	> **NOTE:** If you choose to install a different edition of VS 2015, make sure to do a **Custom** install and select the checkbox **Universal Windows App Development Tools** -> **Tools and Windows SDK**.
 
@@ -47,6 +47,10 @@ Your machine setup includes the following items already downloaded:
 
 ### Download Azure Device Explorer
 - To register your devices in the Azure IoT Hub Service and to monitor the communication between them you need to install the [Azure Device Explorer](https://github.com/Azure/azure-iot-sdks/blob/master/tools/DeviceExplorer/doc/how_to_use_device_explorer.md). Follow this link to download the SetupDeviceExplorer.msi file: https://github.com/Azure/azure-iot-sdks/releases.
+
+### Download the IoT Core Dashboard
+- The Windows 10 IoT Core Dashboard allows you to easily discover and access your tiny devices running Windows IoT Core 10.0.10586 version or later. You can download this dashboard from here: https://ms-iot.github.io/content/en-US/GetStarted.htm
+
 
 <a name="Task12" />
 ### Setting up your Devices
@@ -78,14 +82,18 @@ To setup your devices perform the following steps:
 
 5. Wait for the OS to boot.
 
-6. Run the **Windows 10 IoT Core Watcher** utility (installed in step 2) in your development PC and copy your Raspberry Pi IP address by right-clicking on the detected device and selecting **Copy IP Address**.
+<Go to "blog url" and download the Windows 10 IoT Core Watcher>
+
+6. Run the **Windows 10 IoT Core Dashboard** on your development PC and note your Raspberry Pi IP address on the detected device [each device in this lab has a unqiue name, situated on the blue box].
 
 	- Click the windows "**Start**" button
-	- Type "**WindowsIoTCoreWatcher**" to pull it up in the search results
+	- Type "**IoT**" to pull it up in the search results
 	- You may want to right click on the program name and select "**Pin to Start**" to pin it to your start screen for easy access
 	- Press **Enter** to run it
 
-	![windows-iot-core-watcher](Images/windows-iot-core-watcher.png?raw=true)
+	![windows-iot-core-dashboard](Images/iot_core_dashboard.png?raw=true)
+
+<If your device does not show up, follow the "GetIPAddressFromHostName.docx" document for instructions on gaining your IP from your unique device name on the bright label>
 
 7. Launch an administrator PowerShell console on your local PC. The easiest way to do this is to type _powershell_ in the **Search the web and Windows** textbox near the Windows Start Menu. Windows will find **PowerShell** on your machine. Right-click the **Windows PowerShell** entry and select **Run as administrator**. The PS console will show.
 
