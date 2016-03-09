@@ -44,8 +44,6 @@ Your machine setup includes the following items already downloaded:
 
 - Make sure you’ve **enabled developer mode** in Windows 10 by following [these instructions](https://msdn.microsoft.com/library/windows/apps/xaml/dn706236.aspx).
 
-- Enable your device to internet share with the Raspberry Pi by following the instructions in the file 'Setup your device to Internet Share.pdf'
-
 
 ### Download Azure Device Explorer
 - To register your devices in the Azure IoT Hub Service and to monitor the communication between them you need to install the [Azure Device Explorer](https://github.com/Azure/azure-iot-sdks/blob/master/tools/DeviceExplorer/doc/how_to_use_device_explorer.md). Follow this link to download the SetupDeviceExplorer.msi file: https://github.com/Azure/azure-iot-sdks/releases.
@@ -88,7 +86,9 @@ To setup your devices perform the following steps:
 
 <Go to "blog url" and download the Windows 10 IoT Core Watcher>
 
-6. Run the **Windows 10 IoT Core Dashboard** on your development PC and note your Raspberry Pi IP address on the detected device [each device in this lab has a unqiue name, situated on the blue box].
+6. Enable your device to internet share with the Raspberry Pi by following the instructions in the file 'Setup your device to Internet Share.pdf'
+
+7. Run the **Windows 10 IoT Core Dashboard** on your development PC and note your Raspberry Pi IP address on the detected device [each device in this lab has a unqiue name, situated on the blue box].
 
 	- Click the windows "**Start**" button
 	- Type "**IoT**" to pull it up in the search results
@@ -99,25 +99,25 @@ To setup your devices perform the following steps:
 
 <If your device does not show up, follow the "GetIPAddressFromHostName.docx" document for instructions on gaining your IP from your unique device name on the bright label>
 
-7. Launch an administrator PowerShell console on your local PC. The easiest way to do this is to type _powershell_ in the **Search the web and Windows** textbox near the Windows Start Menu. Windows will find **PowerShell** on your machine. Right-click the **Windows PowerShell** entry and select **Run as administrator**. The PS console will show.
+8. Launch an administrator PowerShell console on your local PC. The easiest way to do this is to type _powershell_ in the **Search the web and Windows** textbox near the Windows Start Menu. Windows will find **PowerShell** on your machine. Right-click the **Windows PowerShell** entry and select **Run as administrator**. The PS console will show.
 
 	![Running Powershell as Administrator](Images/running-powershell-as-administrator.png?raw=true)
 
-8. You may need to start the **WinRM** service on your desktop to enable remote connections. From the PS console type the following command:
+9. You may need to start the **WinRM** service on your desktop to enable remote connections. From the PS console type the following command:
 
 	`net start WinRM`
 
-9. From the PS console, type the following command, substituting '<_IP Address_>' with the IP value copied in prev:
+10. From the PS console, type the following command, substituting '<_IP Address_>' with the IP value copied in prev:
 
 	`Set-Item WSMan:\localhost\Client\TrustedHosts -Value <machine-name or IP Address>`
 
-10.  Type **Y** and press **Enter** to confirm the change.
+11.  Type **Y** and press **Enter** to confirm the change.
 
-11. Now you can start a session with you Windows IoT Core device. From you administrator PS console, type:
+12. Now you can start a session with you Windows IoT Core device. From you administrator PS console, type:
 
 	`Enter-PSSession -ComputerName <IP Address> -Credential localhost\Administrator`
 
-12. In the credential dialog enter the following default password: `p@ssw0rd`.
+13. In the credential dialog enter the following default password: `p@ssw0rd`.
 
 	> **Note:** The connection process is not immediate and can take up to 30 seconds.
 
@@ -125,7 +125,7 @@ To setup your devices perform the following steps:
 
 	![Connected to the Raspberry using PS](Images/connected-to-the-raspberry-using-ps.png?raw=true)
 
-13. Disconnect from the Powershell Session
+14. Disconnect from the Powershell Session
 	`Exit-PSSession`
 
 <a name="Task13" />
