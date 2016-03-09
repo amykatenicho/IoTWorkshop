@@ -44,6 +44,8 @@ Your machine setup includes the following items already downloaded:
 
 - Make sure you’ve **enabled developer mode** in Windows 10 by following [these instructions](https://msdn.microsoft.com/library/windows/apps/xaml/dn706236.aspx).
 
+- Enable your device to internet share with the Raspberry Pi by following the instructions in the file 'Setup your device to Internet Share.pdf'
+
 
 ### Download Azure Device Explorer
 - To register your devices in the Azure IoT Hub Service and to monitor the communication between them you need to install the [Azure Device Explorer](https://github.com/Azure/azure-iot-sdks/blob/master/tools/DeviceExplorer/doc/how_to_use_device_explorer.md). Follow this link to download the SetupDeviceExplorer.msi file: https://github.com/Azure/azure-iot-sdks/releases.
@@ -182,7 +184,7 @@ You must register your device in order to be able to send and receive informatio
 Now that the device is configured, you will see how to create an application to read the value of the FEZ HAT sensors, and then send those values to an Azure IoT Hub.
 
 <a name="Task21" />
-### Read FEZ HAT sensors
+### [OPTIONAL] Read FEZ HAT sensors
 In order to get the information out of the hat sensors, you will take advantage of the [Developers' Guide](https://www.ghielectronics.com/docs/329/fez-hat-developers-guide "GHI Electronics FEZ HAT Developer's Guide") that [GHI Electronics](https://www.ghielectronics.com/ "GHI Electronics")  published.
 
 1. Find the folder on your USB Stick called 'ghi_elect-windows-iot-183b64180b7c'and open the Microsoft Visual Studio Solution File
