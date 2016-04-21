@@ -210,32 +210,26 @@ Now that you know how to read the FEZ HAT sensors data, you will send that infor
 
 	![arm-target-platform](Images/arm-target-platform.png?raw=true)
 
-4. Build the solution to restore the NuGet packages, and make sure it builds:
 
-	![ghifezhat-build-solution](Images/ghifezhat-build-solution.png?raw=true)
-
-	![ghifezhat-build-succeeded](Images/ghifezhat-build-succeeded.png?raw=true)
-
-
-5. To deploy the application to the Raspberry Pi, the device has to be on the same network as the development computer. To run the program, select **Remote device** in the _Debug Target_ dropdown list:
+4. To deploy the application to the Raspberry Pi, the device has to be on the same network as the development computer. To run the program, select **Remote device** in the _Debug Target_ dropdown list:
 
 	![Deploy to Remote machine](Images/deploy-to-remote-machine.png?raw=true)
 
 	_Deploying the application to a Remote Machine_
 
-6. If a remote machine has not been selected before, the **Select Remote Connection** screen will be displayed:
+5. If a remote machine has not been selected before, the **Select Remote Connection** screen will be displayed:
 
 	![Remote Connection](Images/remote-connection.png?raw=true)
 
 	_Setting up the Remote Connection_
 
-7. If the device is not auto-detected, the Raspberry Pi IP or name can be entered in the **Address** field. Otherwise, click the desired device. Change the **Authentication Mode** to **Universal (Unencrypted Protocol)** or none if unavaliable:
+6. If the device is not auto-detected, the Raspberry Pi IP or name can be entered in the **Address** field. Otherwise, click the desired device. Change the **Authentication Mode** to **Universal (Unencrypted Protocol)** or none if unavaliable:
 
 	![Set Authentication mode to Universal](Images/set-authentication-mode-to-universal.png?raw=true)
 
 	_Setting the Authentication Mode_
 
-8. If you want to change the registered remote device later it can be done in the project **Properties** page. Right-click the project name (_GHIElectronics.UAP.Examples.FEZHAT_) and select **Properties**. In the project Properties' page, select the **Debug** tab and enter the new device name or IP in the **Remote Machine** field.
+7. If you want to change the registered remote device later it can be done in the project **Properties** page. Right-click the project name (_GHIElectronics.UAP.Examples.FEZHAT_) and select **Properties**. In the project Properties' page, select the **Debug** tab and enter the new device name or IP in the **Remote Machine** field.
 
 	![Change Remote connection](Images/change-remote-connection.png?raw=true)
 
@@ -243,7 +237,7 @@ Now that you know how to read the FEZ HAT sensors data, you will send that infor
 
 	> **Note:** Clicking the **Find** button will display the **Remote Connection** screen.
 
-9. Insert code for a sensor timer
+8. Insert code for a sensor timer
 
 	1. Instead of the **Button_Click** method (commented out in the code *in green*) find the comment "//ADD TIMER_TICK METHOD HERE" and add the code below:
 
@@ -269,13 +263,13 @@ Now that you know how to read the FEZ HAT sensors data, you will send that infor
 		Which will make the Timer tick twice a second.
 
 
-10. Before adding real sensor information you can run this code to see how the device connects to your **Azure IoT Hub** and sends information. Run the application.
+9. Before adding real sensor information you can run this code to see how the device connects to your **Azure IoT Hub** and sends information. Run the application.
 
 	![Debug Console output](Images/debug-console-output.png?raw=true)
 
 	_Debugging in the Output Window_
 
-11. After the app has been successfully deployed, it can start sending messages to the IoT Hub.
+10. After the app has been successfully deployed, it can start sending messages to the IoT Hub.
 
 	The information being sent can be monitored using the Device Explorer application. Run the application and go to the **Data** tab and select the name of the device you want to monitor (_myFirstDevice_ in your case), then click on **Monitor**
 
@@ -283,7 +277,7 @@ Now that you know how to read the FEZ HAT sensors data, you will send that infor
 
 	> **Note:** If the Device Explorer hub connection is not configured yet, you can follow the instructions explained in the [Registering your device](#Task14) section
 
-12.  Now remove the timer created in that flow before you continue. A new timer will be created in the next steps replacing the previous one. Remove the **Timer_Tick** method you created before and delete the following lines from the **MainPage** constructor
+11.  Now remove the timer created in that flow before you continue. A new timer will be created in the next steps replacing the previous one. Remove the **Timer_Tick** method you created before and delete the following lines from the **MainPage** constructor
 
 	````C#
 	var timer = new DispatcherTimer();
@@ -292,7 +286,7 @@ Now that you know how to read the FEZ HAT sensors data, you will send that infor
 	timer.Start();
 	````
 
-13. Now that the device is connected to the Azure IoT Hub, add some real sensor information. First, you need to add a reference the FEZ HAT drivers. To do so, instead of manually adding the projects included in the GHI Developer's Guide, you will install the [NuGet package](https://www.nuget.org/packages/GHIElectronics.UWP.Shields.FEZHAT/ "FEZ HAT NuGet Package") that they provide. To do this, open the **Package Manager Console** (Tools/NuGet Package Manager/Package Manager Console) and execute the following command:
+12. Now that the device is connected to the Azure IoT Hub, add some real sensor information. First, you need to add a reference the FEZ HAT drivers. To do so, instead of manually adding the projects included in the GHI Developer's Guide, you will install the [NuGet package](https://www.nuget.org/packages/GHIElectronics.UWP.Shields.FEZHAT/ "FEZ HAT NuGet Package") that they provide. To do this, open the **Package Manager Console** (Tools/NuGet Package Manager/Package Manager Console) and execute the following command:
 
 	````PowerShell
 	PM> Install-Package GHIElectronics.UWP.Shields.FEZHAT
@@ -302,13 +296,13 @@ Now that you know how to read the FEZ HAT sensors data, you will send that infor
 
 	_Installing the FEZ hat Nuget package_
 
-14. Add a reference to the FEZ HAT library namespace in the _MainPage.xaml.cs_ file. Find all the 'using' statements of code at the top of the file and add the following line of code to the end of them:
+13. Add a reference to the FEZ HAT library namespace in the _MainPage.xaml.cs_ file. Find all the 'using' statements of code at the top of the file and add the following line of code to the end of them:
 
 	````C#
 	using GHIElectronics.UWP.Shields;
 	````
 
-15. Declare the variables that will hold the reference to the following objects, find the comment "//DECLARE VARIABLES HERE" and ad the code below:
+14. Declare the variables that will hold the reference to the following objects, find the comment "//DECLARE VARIABLES HERE" and ad the code below:
  - **hat**: Of the type **Shields.FEZHAT**, will contain the fez hat driver object that you will use to communicate with the FEZ hat through the Raspberry Pi hardware.
   - **telemetryTimer**: of the type **DispatchTimer**, that will be used to poll the hat sensors at regular basis. For every _tick_ of the timer the value of the sensors will be get and sent to Azure.
 
@@ -317,7 +311,7 @@ Now that you know how to read the FEZ HAT sensors data, you will send that infor
 	DispatcherTimer telemetryTimer;
 	````
 
-16. You will add the following method to initialize the objects used to handle the communication with the hat, find the comment "//ENTER SETUP HAT ASYNC METHOD HERE" and place below. 
+15. You will add the following method to initialize the objects used to handle the communication with the hat, find the comment "//ENTER SETUP HAT ASYNC METHOD HERE" and place below. 
 	The **TelemetryTimer_Tick** method will be defined next, and will be executed every 500 ms according to the value hardcoded in the **Interval** property.
 
 	````C#
@@ -334,7 +328,7 @@ Now that you know how to read the FEZ HAT sensors data, you will send that infor
 	}
 	````
 
-17. The following method will be executed every time the timer ticks, and will poll the value of the hat's temperature sensor, send it to the Azure IoT Hub and show the value obtained.
+16. The following method will be executed every time the timer ticks, and will poll the value of the hat's temperature sensor, send it to the Azure IoT Hub and show the value obtained.
 	Place the code just below the comment "//ENTER TELEMENTRYTIMER_TICK METHOD HERE"
 
 	````C#
@@ -356,7 +350,7 @@ Now that you know how to read the FEZ HAT sensors data, you will send that infor
 	The last two lines are used to show the current value of the temperature sensor to the debug console respectively.
 
 
-18. Before running the application you need to add the call to the **SetupHatAsync** method. Find the **Page_Loaded** method and place those two lines of code inside the {} curly brackets:
+17. Before running the application you need to add the call to the **SetupHatAsync** method. Find the **Page_Loaded** method and place those two lines of code inside the {} curly brackets:
 
 	````C#
 	private async void Page_Loaded(object sender, RoutedEventArgs e)
@@ -371,18 +365,18 @@ Now that you know how to read the FEZ HAT sensors data, you will send that infor
 	
 	> **Asynchronous** methods/keywords help optimize the execution of resources. An asynchronous method returns an answer immediately, allowing the calling program to perform other operations at the same time. Allowing multi-threaded programming. This is different to a synchronous method that waits for the method to complete before continuing to execute the rest of the code.
 
-19. Ensure that the target platform for the project is set to "**ARM**":
+18. Ensure that the target platform for the project is set to "**ARM**":
 
 	![arm-target-platform](Images/arm-target-platform.png?raw=true)
 
-20. Build the solution to restore the NuGet packages, and make sure it builds:
+19. Build the solution to restore the NuGet packages, and make sure it builds:
 
 	![ghifezhat-build-solution](Images/ghifezhat-build-solution.png?raw=true)
 
 	![ghifezhat-build-succeeded](Images/ghifezhat-build-succeeded.png?raw=true)
 
 
-21. Now you are ready to run the application. Connect the Raspberry Pi with the FEZ HAT and run the application. After the app is deployed you will start to see in the output console the values polled from the sensor. The information sent to Azure is also shown in the console.
+20. Now you are ready to run the application. Connect the Raspberry Pi with the FEZ HAT and run the application. After the app is deployed you will start to see in the output console the values polled from the sensor. The information sent to Azure is also shown in the console.
 
 	![Console output](Images/console-output.png?raw=true)
 
