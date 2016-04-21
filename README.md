@@ -186,45 +186,6 @@ Now that the device is configured, you will see how to create an application to 
 <a name="Task21" />
 
 
-1. Ensure that the target platform for the project is set to "**ARM**":
-
-	![arm-target-platform](Images/arm-target-platform.png?raw=true)
-
-1. Build the solution to restore the NuGet packages, and make sure it builds:
-
-	![ghifezhat-build-solution](Images/ghifezhat-build-solution.png?raw=true)
-
-	![ghifezhat-build-succeeded](Images/ghifezhat-build-succeeded.png?raw=true)
-
-
-
-
-4. To deploy the application to the Raspberry Pi, the device has to be on the same network as the development computer. To run the program, select **Remote device** in the _Debug Target_ dropdown list:
-
-	![Deploy to Remote machine](Images/deploy-to-remote-machine.png?raw=true)
-
-	_Deploying the application to a Remote Machine_
-
-5. If a remote machine has not been selected before, the **Select Remote Connection** screen will be displayed:
-
-	![Remote Connection](Images/remote-connection.png?raw=true)
-
-	_Setting up the Remote Connection_
-
-6. If the device is not auto-detected, the Raspberry Pi IP or name can be entered in the **Address** field. Otherwise, click the desired device. Change the **Authentication Mode** to **Universal (Unencrypted Protocol)** or none if unavaliable:
-
-	![Set Authentication mode to Universal](Images/set-authentication-mode-to-universal.png?raw=true)
-
-	_Setting the Authentication Mode_
-
-7. If you want to change the registered remote device later it can be done in the project **Properties** page. Right-click the project name (_GHIElectronics.UAP.Examples.FEZHAT_) and select **Properties**. In the project Properties' page, select the **Debug** tab and enter the new device name or IP in the **Remote Machine** field.
-
-	![Change Remote connection](Images/change-remote-connection.png?raw=true)
-
-	_Changing the Remote Connection Settings_
-
-	> **Note:** Clicking the **Find** button will display the **Remote Connection** screen.
-
 <a name="Task22" />
 ### Send telemetry data to the Azure IoT Hub
 
