@@ -27,7 +27,7 @@ This lab includes the following tasks:
 5. [Summary](#Summary)
 
 <a name="Task1" />
-## Setup
+## Pre-requisites 
 The following sections are intended to setup your environment to be able to create and run your solutions with Windows 10 IoT Core.
 
 <a name="Task11" />
@@ -36,7 +36,7 @@ Your machine setup includes the following items already downloaded:
 
 - Windows 10 (build 10240) or better
 
-- Visual Studio 2015 or above – [Community Edition](http://www.visualstudio.com/downloads/download-visual-studio-vs) is sufficient. Make sure to install Visual Studio Update 1 for the latest 10586 build of Windows IoT Core: https://www.visualstudio.com/en-us/news/vs2015-update1-vs.aspx
+- Visual Studio 2015 with Update 1 – [Community Edition](http://www.visualstudio.com/downloads/download-visual-studio-vs) is sufficient. Make sure to install Visual Studio Update 1 for the latest 10586 build of Windows IoT Core: https://www.visualstudio.com/en-us/news/vs2015-update1-vs.aspx
 
 	> **NOTE:** If you choose to install a different edition of VS 2015, make sure to do a **Custom** install and select the checkbox **Universal Windows App Development Tools** -> **Tools and Windows SDK**.
 
@@ -55,6 +55,8 @@ Your machine setup includes the following items already downloaded:
 
 
 <a name="Task12" />
+## During the Lab
+
 ### Setting up your Devices
 
 For this project, you have the following items
